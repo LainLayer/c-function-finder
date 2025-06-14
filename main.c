@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <stdbool.h>
 
 #define STB_C_LEXER_IMPLEMENTATION
 #include "stb_c_lexer.h"
@@ -127,7 +128,20 @@ int main(int argc, char *argv[]) {
 
     unsigned int counter = 0;
 
+    bool flushing = false;
+
     while(stb_c_lexer_get_token(&lexer)) {
+        if (flushing) {
+            while (lexer.token != ')') {
+                printf("%.*s ", (int)(lexer.where_lastchar - lexer.where_firstchar) + 1, lexer.where_firstchar);
+                stb_c_lexer_get_token(&lexer);
+            }
+
+            flushing = false;
+
+            printf(")\n");
+        }
+
         switch(lexer.token) {
         case CLEX_parse_error: {
             fprintf(stderr, "parsing error!\n");
@@ -153,13 +167,15 @@ int main(int argc, char *argv[]) {
 
             if(lookback[0].kind == SOME_IDENTIFIER && lookback[1].kind == SOME_IDENTIFIER) {
                 printf(
-                    "%s:%d:%d: %s %s()\n",
+                    "%s:%d:%d: %s %s(",
                     argv[1],
                     lookback[1].location.line_number,
                     lookback[1].location.line_offset,
                     lookback[0].string,
                     lookback[1].string
                 );
+
+                flushing = true;
             }
 
             lookback[0] = lookback[1];
