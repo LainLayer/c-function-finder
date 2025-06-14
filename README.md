@@ -23,7 +23,8 @@ raylib.h:978:11: bool IsWindowHidden(void )
 raylib.h:979:11: bool IsWindowMinimized(void )
 raylib.h:980:11: bool IsWindowMaximized(void )
 raylib.h:981:11: bool IsWindowFocused(void )
-raylib.h:982:11: bool IsWindowResized(void )... etc
+raylib.h:982:11: bool IsWindowResized(void )
+... etc
 ```
 
 ## Current Limitations
