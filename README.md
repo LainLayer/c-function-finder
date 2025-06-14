@@ -14,16 +14,16 @@ The main purpose of this is to find the location of the definition and the name 
 
 ```console
 $ ./main raylib.h
-raylib.h:973:11: void InitWindow(int width , int height , const char * title )
-raylib.h:974:11: void CloseWindow(void )
-raylib.h:975:11: bool WindowShouldClose(void )
-raylib.h:976:11: bool IsWindowReady(void )
-raylib.h:977:11: bool IsWindowFullscreen(void )
-raylib.h:978:11: bool IsWindowHidden(void )
-raylib.h:979:11: bool IsWindowMinimized(void )
-raylib.h:980:11: bool IsWindowMaximized(void )
-raylib.h:981:11: bool IsWindowFocused(void )
-raylib.h:982:11: bool IsWindowResized(void )
+raylib.h:973:11: void InitWindow(int width, int height, const char *title)
+raylib.h:974:11: void CloseWindow(void)
+raylib.h:975:11: bool WindowShouldClose(void)
+raylib.h:976:11: bool IsWindowReady(void)
+raylib.h:977:11: bool IsWindowFullscreen(void)
+raylib.h:978:11: bool IsWindowHidden(void)
+raylib.h:979:11: bool IsWindowMinimized(void)
+raylib.h:980:11: bool IsWindowMaximized(void)
+raylib.h:981:11: bool IsWindowFocused(void)
+raylib.h:982:11: bool IsWindowResized(void)
 ... etc
 ```
 

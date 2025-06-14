@@ -132,14 +132,15 @@ int main(int argc, char *argv[]) {
 
     while(stb_c_lexer_get_token(&lexer)) {
         if (flushing) {
+            char *start_pointer = lexer.where_firstchar;
+            char *end_pointer   = start_pointer;
             while (lexer.token != ')') {
-                printf("%.*s ", (int)(lexer.where_lastchar - lexer.where_firstchar) + 1, lexer.where_firstchar);
+                end_pointer = lexer.where_lastchar;
                 stb_c_lexer_get_token(&lexer);
             }
+            printf("%.*s)\n", (int)(end_pointer - start_pointer) + 1, start_pointer);
 
             flushing = false;
-
-            printf(")\n");
         }
 
         switch(lexer.token) {
